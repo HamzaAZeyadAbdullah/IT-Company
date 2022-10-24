@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="it_compModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="department">
+    <Key>
+      <PropertyRef Name="dno" />
+    </Key>
+    <Property Name="dno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dname" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="durl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="dlogo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="employees" Relationship="Self.FK__employees__dno__25869641" FromRole="department" ToRole="employees" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="eno" />
+    </Key>
+    <Property Name="eno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ename" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="byear" Type="DateTime" Precision="0" />
+    <Property Name="salary" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="picture" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="dno" Type="Int32" />
+    <NavigationProperty Name="department" Relationship="Self.FK__employees__dno__25869641" FromRole="employees" ToRole="department" />
+  </EntityType>
+  <Association Name="FK__employees__dno__25869641">
+    <End Role="department" Type="Self.department" Multiplicity="0..1" />
+    <End Role="employees" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="department">
+        <PropertyRef Name="dno" />
+      </Principal>
+      <Dependent Role="employees">
+        <PropertyRef Name="dno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="it_compEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="departments" EntityType="Self.department" />
+    <EntitySet Name="employees" EntityType="Self.employee" />
+    <AssociationSet Name="FK__employees__dno__25869641" Association="Self.FK__employees__dno__25869641">
+      <End Role="department" EntitySet="departments" />
+      <End Role="employees" EntitySet="employees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

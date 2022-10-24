@@ -1,0 +1,30 @@
+﻿@model IEnumerable<IT_Comp.Models.employee>
+
+@{
+    ViewBag.Title = "HomePage";
+}
+
+<h2>HomePage</h2>
+
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="@Url.Content(item.picture)" alt="..."width="200"height="100">
+                <div class="caption">
+                    <h3>@item.ename</h3>
+                    <p>...</p>
+                    <p><a href="@Url.Action("Details","employees",new { id = item.eno })" class="btn btn-primary" role="button">More Info</a></p>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+

@@ -1,0 +1,133 @@
+﻿@model IEnumerable<IT_Comp.Models.employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add New Employee", "Create", null, new { @class = "btn btn-primary" })
+
+
+    <a href="@Url.Action("Create","employees")" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus">
+
+        </span>
+        Create new employee
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.byear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.department.dname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.byear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salary)
+
+        </td>
+       
+
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.picture)*@
+            <img src="@Url.Content(item.picture)" width="50" height="50"  alt="no image"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.department.dname)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.eno }, new { @class = "btn btn-warning" }) |*@
+
+            <a href="@Url.Action("Edit","employees",new { id=item.eno})" class="btn btn-success">
+                <span class="glyphicon glyphicon-edit">
+                    Edit
+                </span>
+            </a>
+
+
+            @Html.ActionLink("DeptInfo", "Details", "departments", new { id = item.dno }, new { @class = "btn btn-warning" })|
+            @Html.ActionLink("Details", "Details", new { id = item.eno }, new { @class = "btn btn-info" }) |
+            @*@Html.ActionLink("Delete", "Delete", new { id = item.eno }, new { @class = "btn btn-danger" })*@
+            <a href="@Url.Action("Delete","employees",new { id = item.eno })" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash"></span>
+                Delete
+            </a>
+        </td>
+    </tr>
+
+    
+}
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <label>Sum:@Html.Action("Sum")</label><br />
+            <label>Maximum:@Html.Action("Max")</label><br />
+            <label>Minimum:@Html.Action("Min")</label><br />
+            <label>Average:@Html.Action("Avg")</label><br />
+            <label>Count : @Html.Action("Count")</label>
+        </td>
+    </tr>
+
+
+
+</table>
+
+
+
+<div class="alert-success" style="padding-left: 300px">
+    <label>Sum : @Html.Action("Sum")</label><br />
+    <label>Maximum : @Html.Action("Max")</label><br />
+    <label>Minimum : @Html.Action("Min")</label><br />
+    <label>Average : @Html.Action("Avg")</label><br />
+    <label>Count : @Html.Action("Count")</label><br />
+</div>

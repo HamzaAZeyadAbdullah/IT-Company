@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="it_compModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="department">
+    <Key>
+      <PropertyRef Name="dno" />
+    </Key>
+    <Property Name="dno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dname" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="durl" Type="varchar" MaxLength="500" />
+    <Property Name="dlogo" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="eno" />
+    </Key>
+    <Property Name="eno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ename" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="gender" Type="varchar" MaxLength="6" />
+    <Property Name="city" Type="nvarchar" MaxLength="500" />
+    <Property Name="byear" Type="date" />
+    <Property Name="salary" Type="numeric" Precision="18" Scale="3" />
+    <Property Name="email" Type="nvarchar" MaxLength="500" />
+    <Property Name="password" Type="nvarchar" MaxLength="500" />
+    <Property Name="picture" Type="nvarchar" MaxLength="500" />
+    <Property Name="dno" Type="int" />
+  </EntityType>
+  <Association Name="FK__employees__dno__25869641">
+    <End Role="department" Type="Self.department" Multiplicity="0..1" />
+    <End Role="employees" Type="Self.employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="department">
+        <PropertyRef Name="dno" />
+      </Principal>
+      <Dependent Role="employees">
+        <PropertyRef Name="dno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="it_compModelStoreContainer">
+    <EntitySet Name="department" EntityType="Self.department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__employees__dno__25869641" Association="Self.FK__employees__dno__25869641">
+      <End Role="department" EntitySet="department" />
+      <End Role="employees" EntitySet="employees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

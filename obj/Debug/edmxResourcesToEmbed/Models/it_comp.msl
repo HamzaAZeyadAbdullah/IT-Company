@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="it_compModelStoreContainer" CdmEntityContainer="it_compEntities">
+    <EntitySetMapping Name="departments">
+      <EntityTypeMapping TypeName="it_compModel.department">
+        <MappingFragment StoreEntitySet="department">
+          <ScalarProperty Name="dno" ColumnName="dno" />
+          <ScalarProperty Name="dname" ColumnName="dname" />
+          <ScalarProperty Name="durl" ColumnName="durl" />
+          <ScalarProperty Name="dlogo" ColumnName="dlogo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="it_compModel.employee">
+        <MappingFragment StoreEntitySet="employees">
+          <ScalarProperty Name="eno" ColumnName="eno" />
+          <ScalarProperty Name="ename" ColumnName="ename" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="byear" ColumnName="byear" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="dno" ColumnName="dno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

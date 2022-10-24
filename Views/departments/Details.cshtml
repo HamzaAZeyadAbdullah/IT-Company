@@ -1,0 +1,42 @@
+﻿@model IT_Comp.Models.department
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>department</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.durl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.durl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dlogo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dlogo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.dno }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
